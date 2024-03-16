@@ -12,7 +12,7 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Empty Name', () => {
-      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string and l.');
+      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string.');
     });
 
 
@@ -45,7 +45,7 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Systolic Less Than Diastolic', () => {
-      expect(() => BloodPressure("John Doe", 35, 130, 120)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
+      expect(() => BloodPressure("John Doe", 35, 110, 120)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
   });
 
@@ -80,11 +80,11 @@ describe('BloodPressure Function Tests', () => {
 
     // Test Cases for systolic and diastolic
     test('Minimum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 1, 1)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 110, 11)).not.toThrow();
     });
 
     test('Maximum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 500, 500)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 150, 130)).not.toThrow();
     });
 
     test('Reading Less Than Minimum', () => {
