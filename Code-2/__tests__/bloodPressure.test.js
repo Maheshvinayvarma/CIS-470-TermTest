@@ -99,5 +99,27 @@ describe('BloodPressure Function Tests', () => {
       expect(() => BloodPressure("John Doe", 35, 120, 130)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
   });
+  // Test cases for systolic diagnoses
+  describe('Systolic Diagnoses', () => {
 
+    test('Systolic >= 160 should result in STAGE_2_HBP diagnosis', () => {
+      const result = BloodPressure('Jane Smith', 40, 139, 125);
+      expect(result).toBe('STAGE_2_HBP');
+    });
+
+    test('Systolic < 160 should result in STAGE_1_HBP diagnosis', () => {
+      const result = BloodPressure('Alice', 50, 177, 93);
+      expect(result).toBe('STAGE_1_HBP');
+    });
+
+    test('Systolic < 140 should result in PREHYPERTENSION diagnosis', () => {
+      const result = BloodPressure('Bob', 60, 140, 84);
+      expect(result).toBe('PREHYPERTENSION');
+    });
+
+    test('Systolic <= 120 should result in NORMAL diagnosis', () => {
+      const result = BloodPressure('Eve', 25, 149, 77);
+      expect(result).toBe('NORMAL');
+    });
+  });
 });
